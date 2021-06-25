@@ -40,9 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu = new javax.swing.JMenu();
         jCambiarUsuario = new javax.swing.JMenuItem();
         jSalir = new javax.swing.JMenuItem();
-        jVer = new javax.swing.JMenu();
-        jProveedor = new javax.swing.JMenuItem();
-        jVerProveedor = new javax.swing.JMenuItem();
+        jProveeders = new javax.swing.JMenu();
         jFacturacion = new javax.swing.JMenu();
         MPedidos = new javax.swing.JMenu();
         jProductos = new javax.swing.JMenu();
@@ -99,27 +97,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu);
 
-        jVer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
-        jVer.setText("PROVEEDORES");
-
-        jProveedor.setText("Agregar");
-        jProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProveedorActionPerformed(evt);
+        jProveeders.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jProveeders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
+        jProveeders.setText("PROVEEDORES");
+        jProveeders.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jProveedersMouseClicked(evt);
             }
         });
-        jVer.add(jProveedor);
-
-        jVerProveedor.setText("Ver");
-        jVerProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jVerProveedorActionPerformed(evt);
-            }
-        });
-        jVer.add(jVerProveedor);
-
-        jMenuBar1.add(jVer);
+        jMenuBar1.add(jProveeders);
 
         jFacturacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jFacturacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
@@ -137,6 +123,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jFacturacion);
 
         MPedidos.setText("PEDIDOS");
+        MPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MPedidosMouseClicked(evt);
+            }
+        });
         MPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MPedidosActionPerformed(evt);
@@ -206,23 +197,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
        // CentrarVentana(ped);
     }//GEN-LAST:event_MPedidosActionPerformed
 
-    private void jProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProveedorActionPerformed
-        ProveedoresForm prov = new ProveedoresForm();
-        VentanaPrincipal.add(prov);
-        prov.setVisible(true);
-        //CentrarVentana(prov);
-    }//GEN-LAST:event_jProveedorActionPerformed
-
     private void jAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarProductoActionPerformed
         // TODO add your handling code here:
         ProductosForm pf = new ProductosForm();
         VentanaPrincipal.add(pf);
         pf.setVisible(true);
     }//GEN-LAST:event_jAgregarProductoActionPerformed
-
-    private void jVerProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jVerProveedorActionPerformed
 
     private void jFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacturacionActionPerformed
         VentasForm ven = new VentasForm();
@@ -249,6 +229,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //CentrarVentana(prov);
     }//GEN-LAST:event_jFacturacionMouseClicked
 
+    private void MPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MPedidosMouseClicked
+        // TODO add your handling code here:
+         VentasForm ven = new VentasForm();
+        VentanaPrincipal.add(ven);
+        ven.setVisible(true);
+        //CentrarVentana(prov);
+    }//GEN-LAST:event_MPedidosMouseClicked
+
+    private void jProveedersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProveedersMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jProveedersMouseClicked
+ 
     void CentrarVentana (JInternalFrame frame){
        VentanaPrincipal.add(frame);
        Dimension dimension= VentanaPrincipal.getSize();
@@ -305,9 +298,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jProductos;
-    private javax.swing.JMenuItem jProveedor;
+    private javax.swing.JMenu jProveeders;
     private javax.swing.JMenuItem jSalir;
-    private javax.swing.JMenu jVer;
-    private javax.swing.JMenuItem jVerProveedor;
     // End of variables declaration//GEN-END:variables
 }
