@@ -1,12 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ventanas;
 
-import javax.swing.table.DefaultTableModel;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import javax.swing.table.DefaultTableModel;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
+import modelo.Conexion;
 /**
  *
  * @author Gisel Muñoz
@@ -17,12 +19,50 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
     
     
     public ListaDeProveedores() {
-        this.model = new DefaultTableModel();
-        model.addColumn("cuit");
-        model.addColumn("razon social");
-        model.addColumn("direccion");
-        model.addColumn("telefono");
         initComponents();
+        try
+        {
+            DefaultTableModel modelo = new DefaultTableModel();
+            JtProveedores.setModel(modelo);
+            PreparedStatement ps = null;
+            ResultSet rs = ps.executeQuery("SELECT cuit, razon social, telefono, direccion FROM proveedores") ;
+            Conexion conectar = new Conexion(); 
+            conectar.ConectarBasedeDatos();
+          
+            
+            String sql = "SELECT cuit, razonSocial, telefono,direccion FROM proveedores";
+            //ps = (PreparedStatement) conectar.conexion;
+           // rs = ps.executeQuery();
+            //conectar.resultado = conectar.sentencia.executeQuery(sql);
+            
+            
+            ResultSetMetaData resultadosMd = (ResultSetMetaData) rs.getMetaData();
+            int cantidadDeColumnas = resultadosMd.getColumnCount();
+            
+            //this.model = new DefaultTableModel();
+            modelo.addColumn("Cuit");
+            modelo.addColumn("Razon Social");
+            modelo.addColumn("Direccion");
+            modelo.addColumn("Telefono");
+            JtProveedores.setModel(modelo);
+            
+            
+         /*   
+            while (resultado.next()){
+                
+                Object [] filas= new Object[cantidadDeColumnas];
+                
+               for(int x=0; x< cantidadDeColumnas; x++){
+                    filas[x]= resultado.getObject(x +1);
+                }
+                modelo.addRow(filas);
+            }
+            */
+        } catch(SQLException ex){
+             System.out.print("No funciona y la reputa madre q me pario");
+            
+            
+        }
         
     }
 
@@ -36,30 +76,50 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JtProveedores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         Buscar = new javax.swing.JButton();
         Agregar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JtProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Cuit", "Razon Social", "Direccion", "Telefono"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(JtProveedores);
 
         jLabel1.setText("Proveedores");
 
         Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         Agregar.setText("Agregar");
 
@@ -87,9 +147,9 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Buscar)
                     .addComponent(Agregar)
@@ -100,13 +160,17 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Borrar;
     private javax.swing.JButton Buscar;
+    private javax.swing.JTable JtProveedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
