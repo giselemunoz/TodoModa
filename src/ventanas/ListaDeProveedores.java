@@ -1,13 +1,13 @@
 
 package ventanas;
 
-
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import modelo.Conexion;
 /**
  *
@@ -15,28 +15,26 @@ import modelo.Conexion;
  */
 public class ListaDeProveedores extends javax.swing.JInternalFrame {
 
-    DefaultTableModel model;
     
     
     public ListaDeProveedores() {
-        initComponents();
-        try
+        initComponents();{
+        
+        
+        
+         try
         {
             DefaultTableModel modelo = new DefaultTableModel();
             JtProveedores.setModel(modelo);
-            PreparedStatement ps = null;
-            ResultSet rs = ps.executeQuery("SELECT cuit, razon social, telefono, direccion FROM proveedores") ;
-            Conexion conectar = new Conexion(); 
+             Conexion conectar = new Conexion(); 
             conectar.ConectarBasedeDatos();
-          
+
+           
             
-            String sql = "SELECT cuit, razonSocial, telefono,direccion FROM proveedores";
-            //ps = (PreparedStatement) conectar.conexion;
-           // rs = ps.executeQuery();
-            //conectar.resultado = conectar.sentencia.executeQuery(sql);
+            conectar.resultado = conectar.sentencia.executeQuery("SELECT * FROM proveedor");
             
             
-            ResultSetMetaData resultadosMd = (ResultSetMetaData) rs.getMetaData();
+            ResultSetMetaData resultadosMd = (ResultSetMetaData) conectar.resultado.getMetaData();
             int cantidadDeColumnas = resultadosMd.getColumnCount();
             
             //this.model = new DefaultTableModel();
@@ -47,17 +45,17 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
             JtProveedores.setModel(modelo);
             
             
-         /*   
-            while (resultado.next()){
+           
+            while (conectar.resultado.next()){
                 
                 Object [] filas= new Object[cantidadDeColumnas];
                 
                for(int x=0; x< cantidadDeColumnas; x++){
-                    filas[x]= resultado.getObject(x +1);
+                    filas[x]= conectar.resultado.getObject(x +1);
                 }
                 modelo.addRow(filas);
             }
-            */
+           
         } catch(SQLException ex){
              System.out.print("No funciona y la reputa madre q me pario");
             
@@ -65,7 +63,9 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
         }
         
     }
+        
 
+      }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
