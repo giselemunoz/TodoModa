@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import modelo.Conexion;
@@ -69,6 +70,9 @@ public class Interfazlogin extends javax.swing.JFrame {
         jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
             }
         });
 
@@ -178,6 +182,13 @@ public class Interfazlogin extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+        // TODO add your handling code here:
+    
+                                            
+
+    }//GEN-LAST:event_jButton1KeyReleased
 
     /**
      * @param args the command line arguments
