@@ -238,7 +238,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MPedidosMouseClicked
 
     private void jProveedersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProveedersMouseClicked
-        // TODO add your handling code here:
+        ListaDeProveedores listopro = new ListaDeProveedores();
+        VentanaPrincipal.add (listopro);
+        listopro.setVisible(true);
         
     }//GEN-LAST:event_jProveedersMouseClicked
  
@@ -286,7 +288,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MPedidos;
-    private javax.swing.JDesktopPane VentanaPrincipal;
+    public javax.swing.JDesktopPane VentanaPrincipal;
     private javax.swing.JMenuItem jAgregarProducto;
     private javax.swing.JMenuItem jCambiarUsuario;
     private javax.swing.JMenu jFacturacion;

@@ -2,12 +2,17 @@
 package ventanas;
 
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 /**
  *
@@ -78,10 +83,19 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JtProveedores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        Buscar = new javax.swing.JButton();
         Agregar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
+        jbuscar = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("PROVEEDORES");
+
+        JtProveedores.setBorder(new javax.swing.border.MatteBorder(null));
         JtProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -110,37 +124,79 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        JtProveedores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JtProveedoresKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(JtProveedores);
 
+        jLabel1.setFont(new java.awt.Font("Century", 2, 11)); // NOI18N
         jLabel1.setText("Proveedores");
 
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar-usuario (1)_opt.png"))); // NOI18N
+        Agregar.setText("AGREGAR");
+        Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarMouseClicked(evt);
+            }
+        });
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                AgregarActionPerformed(evt);
             }
         });
 
-        Agregar.setText("Agregar");
+        Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar_opt.png"))); // NOI18N
+        Borrar.setText("Eliminar");
 
-        Borrar.setText("Borrar");
+        jbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuscarActionPerformed(evt);
+            }
+        });
+        jbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jbuscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jbuscarKeyTyped(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_opt.png"))); // NOI18N
+        jLabel2.setText("BUSCADOR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Buscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Agregar)
-                        .addGap(111, 111, 111)
-                        .addComponent(Borrar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 41, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addGap(88, 88, 88)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,29 +204,104 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar)
-                    .addComponent(Agregar)
-                    .addComponent(Borrar))
-                .addGap(73, 73, 73))
+                    .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Borrar)
+                    .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void jbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_jbuscarActionPerformed
+
+    private void jbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbuscarKeyTyped
+   
+
+    }//GEN-LAST:event_jbuscarKeyTyped
+
+    private void jbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbuscarKeyReleased
+        
+    }//GEN-LAST:event_jbuscarKeyReleased
+
+    private void jbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbuscarKeyPressed
+      String [] nombres = {"cuit","razonSocial", "telefono", "direccion"};
+      String [] registro = new String [30];
+      
+      String sql = "SELECT * FROM proveedor WHERE cuit LIKE '%" + jbuscar.getText() + "%' "
+      + "OR razonSocial LIKE '%" + jbuscar.getText() + "%'"
+      + "OR telefono LIKE '%" + jbuscar.getText() + "%'"
+      + "OR direccion LIKE '%" + jbuscar.getText() + "%'";
+      
+        DefaultTableModel model = new DefaultTableModel (null, nombres);
+         Conexion conectar = new Conexion(); 
+         conectar.ConectarBasedeDatos();
+         
+        try {
+            conectar.resultado = conectar.sentencia.executeQuery(sql);
+            
+            while (conectar.resultado.next()){
+                registro [0] = conectar.resultado.getString("cuit");
+                registro [1] = conectar.resultado.getString("razonSocial");
+                registro [2] = conectar.resultado.getString("telefono");
+                registro [3] = conectar.resultado.getString("direccion");
+                model.addRow(registro);
+            }
+            JtProveedores.setModel(model);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListaDeProveedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      
+    }//GEN-LAST:event_jbuscarKeyPressed
+
+    private void AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseClicked
+
+       
+    }//GEN-LAST:event_AgregarMouseClicked
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        Proveedor prov = new Proveedor();
+        prov.setVisible(true);
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void JtProveedoresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JtProveedoresKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            try{
+                 Conexion conectar = new Conexion(); 
+                 conectar.ConectarBasedeDatos();
+                 String cuit = JtProveedores.getValueAt(JtProveedores.getSelectedRow(),0).toString();
+                 String razonSocial = JtProveedores.getValueAt(JtProveedores.getSelectedRow(),1).toString();
+                 String telefono = JtProveedores.getValueAt(JtProveedores.getSelectedRow(),2).toString();
+                 String direccion = JtProveedores.getValueAt(JtProveedores.getSelectedRow(),3).toString();
+                 String sql = "UPDATE proveedor SET  razonSocial = '" + razonSocial +"', telefono ='" + telefono +"', direccion ='" +direccion +"' WHERE cuit = '" + cuit + "' ";
+                 conectar.sentencia.executeUpdate(sql);
+                } 
+                 catch (SQLException ex) {
+                    Logger.getLogger(ListaDeProveedores.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+    }//GEN-LAST:event_JtProveedoresKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Borrar;
-    private javax.swing.JButton Buscar;
     private javax.swing.JTable JtProveedores;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jbuscar;
     // End of variables declaration//GEN-END:variables
 }

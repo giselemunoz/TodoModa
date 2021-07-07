@@ -47,7 +47,7 @@ public class ProveedoresForm extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         jLabel1.setText("Agregar Proveedor");
 
-        jLabel2.setText("Nombre");
+        jLabel2.setText("Razon Social");
 
         jLabel3.setText("Telefono");
 
@@ -55,7 +55,7 @@ public class ProveedoresForm extends javax.swing.JInternalFrame {
 
         jButton1.setText("AGREGAR");
 
-        jLabel5.setText("Razon Social");
+        jLabel5.setText("Cuit");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,11 +64,11 @@ public class ProveedoresForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel5))
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -111,7 +111,7 @@ public class ProveedoresForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
         );
