@@ -44,8 +44,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jFacturacion = new javax.swing.JMenu();
         MPedidos = new javax.swing.JMenu();
         jProductos = new javax.swing.JMenu();
-        jAgregarProducto = new javax.swing.JMenuItem();
-        jListarProducto = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -61,7 +59,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         VentanaPrincipal.setLayout(VentanaPrincipalLayout);
         VentanaPrincipalLayout.setHorizontalGroup(
             VentanaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 644, Short.MAX_VALUE)
         );
         VentanaPrincipalLayout.setVerticalGroup(
             VentanaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,6 +120,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jFacturacion);
 
+        MPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/orden_opt.png"))); // NOI18N
         MPedidos.setText("PEDIDOS");
         MPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,28 +137,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jProductos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
         jProductos.setText("PRODUCTOS");
+        jProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jProductosMouseClicked(evt);
+            }
+        });
         jProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jProductosActionPerformed(evt);
             }
         });
-
-        jAgregarProducto.setText("Agregar ");
-        jAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAgregarProductoActionPerformed(evt);
-            }
-        });
-        jProductos.add(jAgregarProducto);
-
-        jListarProducto.setText("Listado");
-        jListarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jListarProductoActionPerformed(evt);
-            }
-        });
-        jProductos.add(jListarProducto);
-
         jMenuBar1.add(jProductos);
 
         setJMenuBar(jMenuBar1);
@@ -191,18 +178,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jProductosActionPerformed
 
     private void MPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPedidosActionPerformed
-        ProveedoresForm prov = new ProveedoresForm();
-        VentanaPrincipal.add(prov);
-        prov.setVisible(true);
+     
        // CentrarVentana(ped);
     }//GEN-LAST:event_MPedidosActionPerformed
-
-    private void jAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarProductoActionPerformed
-        // TODO add your handling code here:
-        ProductosForm pf = new ProductosForm();
-        VentanaPrincipal.add(pf);
-        pf.setVisible(true);
-    }//GEN-LAST:event_jAgregarProductoActionPerformed
 
     private void jFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacturacionActionPerformed
         VentasForm ven = new VentasForm();
@@ -210,10 +188,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ven.setVisible(true);
         //CentrarVentana(prov);
     }//GEN-LAST:event_jFacturacionActionPerformed
-
-    private void jListarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jListarProductoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
         // TODO add your handling code here:
@@ -243,6 +217,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         listopro.setVisible(true);
         
     }//GEN-LAST:event_jProveedersMouseClicked
+
+    private void jProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProductosMouseClicked
+        Productoa listoproducto = new Productoa();
+        VentanaPrincipal.add (listoproducto);
+        listoproducto.setVisible(true);
+    }//GEN-LAST:event_jProductosMouseClicked
  
     void CentrarVentana (JInternalFrame frame){
        VentanaPrincipal.add(frame);
@@ -289,10 +269,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MPedidos;
     public javax.swing.JDesktopPane VentanaPrincipal;
-    private javax.swing.JMenuItem jAgregarProducto;
     private javax.swing.JMenuItem jCambiarUsuario;
     private javax.swing.JMenu jFacturacion;
-    private javax.swing.JMenuItem jListarProducto;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

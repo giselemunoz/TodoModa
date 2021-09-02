@@ -6,6 +6,7 @@
 package ventanas;
 
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import modelo.Conexion;
@@ -151,7 +152,7 @@ public class Interfazlogin extends javax.swing.JFrame {
             Conexion Con = new Conexion();
             String user = txtusuario.getText();
             String pass= txtpass.getText();
-            Con.ConectarBasedeDatos();
+            Connection cn = Con.ConectarBasedeDatos();
             
             String SQL = "SELECT id, usuario FROM usuario WHERE usuario = '"+user+"' AND dni= '"+pass+"'"; 
             
