@@ -4,20 +4,22 @@ package modelo;
 
 public class Proveedores {
     int id;
-    char cuit;
+    String cuit;
     String razonSocial;
-    char direccion;
     int telefono;
+    String direccion;
+    boolean activo;
 
     public Proveedores() {
     }
 
-    public Proveedores(int id, char cuit, String razonSocial, char direccion, int telefono) {
+    public Proveedores(int id, String cuit, String razonSocial, int telefono, String direccion, boolean activo) {
         this.id = id;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
-        this.direccion = direccion;
         this.telefono = telefono;
+        this.direccion = direccion;
+        this.activo = activo;
     }
 
     public int getId() {
@@ -28,11 +30,11 @@ public class Proveedores {
         this.id = id;
     }
 
-    public char getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(char cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 
@@ -44,14 +46,6 @@ public class Proveedores {
         this.razonSocial = razonSocial;
     }
 
-    public char getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(char direccion) {
-        this.direccion = direccion;
-    }
-
     public int getTelefono() {
         return telefono;
     }
@@ -60,13 +54,29 @@ public class Proveedores {
         this.telefono = telefono;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     @Override
     public String toString() {
-        return "Proveedores{" + "id=" + id + ", cuit=" + cuit + ", razonSocial=" + razonSocial + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return "Proveedores{" + "id=" + id + ", cuit=" + cuit + ", razonSocial=" + razonSocial + ", telefono=" + telefono + ", direccion=" + direccion + ", activo=" + activo + '}';
     }
     
     
     
-    
-}
 
+}
+   
