@@ -19,6 +19,7 @@ public class ProductoDAO  implements CRUD{
         conectar.ConectarBasedeDatos();
         
         
+        
     }
    
 
