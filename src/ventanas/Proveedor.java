@@ -144,7 +144,7 @@ public class Proveedor extends javax.swing.JFrame {
             
             
             
-            JOptionPane.showMessageDialog(null, "SALIO LA PUTA QUE LO PARIO");
+            JOptionPane.showMessageDialog(null, "El proveedor fue agregado con exito");
            
           } catch (SQLException ex) {
             Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);

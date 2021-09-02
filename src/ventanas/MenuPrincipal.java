@@ -178,9 +178,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jProductosActionPerformed
 
     private void MPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPedidosActionPerformed
-        ProveedoresForm prov = new ProveedoresForm();
-        VentanaPrincipal.add(prov);
-        prov.setVisible(true);
+     
        // CentrarVentana(ped);
     }//GEN-LAST:event_MPedidosActionPerformed
 

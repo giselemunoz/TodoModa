@@ -293,11 +293,10 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
             Conexion cc = new Conexion();
            
             Connection cn = cc.ConectarBasedeDatos();
-            String sql = "UPDATE proveedor SET  activo  = '0' WHERE idProveedor = '" + valor + "' ";
-            System.out.println("el valor es:" + valor + "el sql es:" + sql);
+            String sql = "UPDATE proveedor SET  activo  = '0' WHERE cuit = '" + valor + "' ";
             PreparedStatement eliminar = cn.prepareStatement(sql);
             eliminar.executeUpdate();
-            JOptionPane.showMessageDialog(null, "borrado");
+            JOptionPane.showConfirmDialog(null, "¿Desea borrar el proveedor?");
 
         } catch (SQLException e) {
         }
