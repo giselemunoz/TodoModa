@@ -107,7 +107,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jFacturacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jFacturacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-        jFacturacion.setText("FACTURACIÓN");
+        jFacturacion.setText("VENTAS");
         jFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jFacturacionMouseClicked(evt);

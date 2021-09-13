@@ -2,6 +2,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -12,6 +13,36 @@ import modelo.Producto;
 public class ProductoDAO  implements CRUD{
      Conexion conectar;
      Connection cn;
+     ResultSet rs;
+     PreparedStatement ps;
+     Producto prod = new Producto ();
+     
+     public Producto listarID(int id){
+         Producto p= new Producto ();
+         String sql="select * from productos where id=? ";
+         try{
+             cn= conectar.ConectarBasedeDatos();
+             ps = cn.prepareStatement(sql);
+             ps.setInt(1,id);
+             rs= ps.executeQuery();
+             while(rs.next()){
+                 p.setId(rs.getInt(1));
+                 p.setDescripcion(rs.getString(2));
+                 p.setId_proveedor(rs.getInt(3));
+                 p.setId_rubro(rs.getInt(4));
+                 p.setCosto(rs.getFloat(5));
+                 p.setPrecio_venta(rs.getFloat(6));
+                 p.setCantidad(rs.getInt(8));
+                // p.setEstado(rs.getString(9));
+                      
+                 
+             }
+             
+         }catch(Exception e){
+             
+         }
+         return p;
+     }
     
 
     public ProductoDAO() {

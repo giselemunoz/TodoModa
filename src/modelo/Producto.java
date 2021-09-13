@@ -86,5 +86,13 @@ public class Producto {
         return "Producto{" + "id=" + id + ", descripcion=" + descripcion + ", id_proveedor=" + id_proveedor + ", id_rubro=" + id_rubro + ", costo=" + costo + ", precio_venta=" + precio_venta + ", cantidad=" + cantidad + '}';
     }
 
+    public void setprov(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void getDescripcion(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
