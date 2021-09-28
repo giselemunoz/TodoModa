@@ -17,16 +17,16 @@ public class ProductoDAO  implements CRUD{
      PreparedStatement ps;
      Producto prod = new Producto ();
      
-     public Producto listarID(int id){
+     public Producto listarID(int idProducto){
          Producto p= new Producto ();
-         String sql="select * from productos where id=? ";
+         String sql="select * from productos where idProducto=? ";
          try{
              cn= conectar.ConectarBasedeDatos();
              ps = cn.prepareStatement(sql);
-             ps.setInt(1,id);
+             ps.setInt(1,idProducto);
              rs= ps.executeQuery();
              while(rs.next()){
-                 p.setId(rs.getInt(1));
+                 p.setidProducto(rs.getInt(1));
                  p.setDescripcion(rs.getString(2));
                  p.setId_proveedor(rs.getInt(3));
                  p.setId_rubro(rs.getInt(4));
@@ -55,7 +55,7 @@ public class ProductoDAO  implements CRUD{
     @Override
     public ResultSet list() {
         try {
-             conectar.resultado = conectar.sentencia.executeQuery("SELECT productos.id, productos.descripcion, productos.costo, productos.precio_venta , productos.cantidad FROM productos WHERE estado = 1");
+             conectar.resultado = conectar.sentencia.executeQuery("SELECT productos.idProducto, productos.descripcion, productos.costo, productos.precio_venta , productos.cantidad FROM productos WHERE estado = 1");
          } catch (SQLException ex) {//
              Logger.getLogger(ProveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -83,7 +83,7 @@ public class ProductoDAO  implements CRUD{
     @Override
     public void update(Object model) {
        Producto producto=(Producto)model;
-       String sql = "UPDATE productos SET descripcion ='" + producto.getDescripcion()+"', costo='" + producto.getCosto()+"',precio_venta ='" + producto.getPrecio_venta()+ "', cantidad ='"+producto.getCantidad() + "' WHERE id = '" + producto.getId() + "' ";
+       String sql = "UPDATE productos SET descripcion ='" + producto.getDescripcion()+"', costo='" + producto.getCosto()+"',precio_venta ='" + producto.getPrecio_venta()+ "', cantidad ='"+producto.getCantidad() + "' WHERE idProducto = '" + producto.getidProducto() + "' ";
       try {
             conectar.sentencia.executeUpdate(sql);
          } catch (SQLException ex) {

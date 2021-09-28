@@ -42,7 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSalir = new javax.swing.JMenuItem();
         jProveeders = new javax.swing.JMenu();
         jFacturacion = new javax.swing.JMenu();
-        MPedidos = new javax.swing.JMenu();
+        jClientes = new javax.swing.JMenu();
         jProductos = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -59,16 +59,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         VentanaPrincipal.setLayout(VentanaPrincipalLayout);
         VentanaPrincipalLayout.setHorizontalGroup(
             VentanaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 644, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
         VentanaPrincipalLayout.setVerticalGroup(
             VentanaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         jMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu.png"))); // NOI18N
-        jMenu.setText("MENU");
+        jMenu.setText("MENU      ");
         jMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuActionPerformed(evt);
@@ -97,7 +97,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jProveeders.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jProveeders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
-        jProveeders.setText("PROVEEDORES");
+        jProveeders.setText("PROVEEDORES       ");
         jProveeders.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jProveedersMouseClicked(evt);
@@ -107,7 +107,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jFacturacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jFacturacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-        jFacturacion.setText("VENTAS");
+        jFacturacion.setText("VENTAS      ");
         jFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jFacturacionMouseClicked(evt);
@@ -120,19 +120,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jFacturacion);
 
-        MPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/orden_opt.png"))); // NOI18N
-        MPedidos.setText("PEDIDOS");
-        MPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clientes.png.jpeg"))); // NOI18N
+        jClientes.setText("CLIENTES        ");
+        jClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MPedidosMouseClicked(evt);
+                jClientesMouseClicked(evt);
             }
         });
-        MPedidos.addActionListener(new java.awt.event.ActionListener() {
+        jClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MPedidosActionPerformed(evt);
+                jClientesActionPerformed(evt);
             }
         });
-        jMenuBar1.add(MPedidos);
+        jMenuBar1.add(jClientes);
 
         jProductos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
@@ -177,16 +177,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
  
     }//GEN-LAST:event_jProductosActionPerformed
 
-    private void MPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPedidosActionPerformed
-     
-       // CentrarVentana(ped);
-    }//GEN-LAST:event_MPedidosActionPerformed
+    private void jClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClientesActionPerformed
+      
+       
+    }//GEN-LAST:event_jClientesActionPerformed
 
     private void jFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacturacionActionPerformed
-        VentasForm ven = new VentasForm();
-        VentanaPrincipal.add(ven);
-        ven.setVisible(true);
-        //CentrarVentana(prov);
+        
     }//GEN-LAST:event_jFacturacionActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
@@ -201,15 +198,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
          VentanaPrincipal.add(ven);
         ven.setVisible(true);
         //CentrarVentana(prov);
+       
     }//GEN-LAST:event_jFacturacionMouseClicked
 
-    private void MPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MPedidosMouseClicked
-        // TODO add your handling code here:
-         VentasForm ven = new VentasForm();
-        VentanaPrincipal.add(ven);
-        ven.setVisible(true);
-        //CentrarVentana(prov);
-    }//GEN-LAST:event_MPedidosMouseClicked
+    private void jClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jClientesMouseClicked
+      /* ClientesForm clientes = new ClientesForm();
+        VentanaPrincipal.add(clientes);
+        clientes.setVisible(true);*/
+      ListaDeClientes listocli = new ListaDeClientes();
+      VentanaPrincipal.add(listocli);
+      listocli.setVisible(true);
+    }//GEN-LAST:event_jClientesMouseClicked
 
     private void jProveedersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProveedersMouseClicked
         ListaDeProveedores listopro = new ListaDeProveedores();
@@ -267,9 +266,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MPedidos;
-    public javax.swing.JDesktopPane VentanaPrincipal;
+    public static javax.swing.JDesktopPane VentanaPrincipal;
     private javax.swing.JMenuItem jCambiarUsuario;
+    private javax.swing.JMenu jClientes;
     private javax.swing.JMenu jFacturacion;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu1;

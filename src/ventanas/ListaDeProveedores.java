@@ -39,7 +39,7 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
                 ResultSetMetaData resultadosMd = (ResultSetMetaData) resultado.getMetaData();
                 int cantidadDeColumnas = resultadosMd.getColumnCount();
 
-                //this.model = new DefaultTableModel();
+              
                 modelo.addColumn("Cuit");
                 modelo.addColumn("Razon Social");
                 modelo.addColumn("Telefono");
@@ -208,7 +208,7 @@ public class ListaDeProveedores extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnborrar)
                     .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();

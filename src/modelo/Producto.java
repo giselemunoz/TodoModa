@@ -4,7 +4,7 @@ package modelo;
 
 public class Producto {
     
-    int id;
+    int idProducto;
     String descripcion;
     int id_proveedor;
     int id_rubro;
@@ -15,8 +15,8 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int id, String descripcion, int id_proveedor, int id_rubro, float costo, float precio_venta, int cantidad) {
-        this.id = id;
+    public Producto(int idProducto, String descripcion, int id_proveedor, int id_rubro, float costo, float precio_venta, int cantidad) {
+        this.idProducto = idProducto;
         this.descripcion = descripcion;
         this.id_proveedor = id_proveedor;
         this.id_rubro = id_rubro;
@@ -25,12 +25,12 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public int getId() {
-        return id;
+    public int getidProducto() {
+        return idProducto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setidProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getDescripcion() {
@@ -83,7 +83,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", descripcion=" + descripcion + ", id_proveedor=" + id_proveedor + ", id_rubro=" + id_rubro + ", costo=" + costo + ", precio_venta=" + precio_venta + ", cantidad=" + cantidad + '}';
+        return "Producto{" + "id=" + idProducto + ", descripcion=" + descripcion + ", id_proveedor=" + id_proveedor + ", id_rubro=" + id_rubro + ", costo=" + costo + ", precio_venta=" + precio_venta + ", cantidad=" + cantidad + '}';
     }
 
     public void setprov(String string) {

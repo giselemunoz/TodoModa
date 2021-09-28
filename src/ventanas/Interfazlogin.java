@@ -23,6 +23,8 @@ public class Interfazlogin extends javax.swing.JFrame {
     public Interfazlogin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtusuario.setText("gonzalez");
+        txtpass.setText("12345678");
     }
 
     /**

@@ -35,6 +35,10 @@ public class Productoa extends javax.swing.JInternalFrame {
         try {
 
             jTableProducto.setModel(modelo);
+            
+            
+            
+            
             //jTableProducto.setAutoResizeMode(jTableProducto.AUTO_RESIZE_OFF);
             resultado = productoDao.list();
 
@@ -218,14 +222,14 @@ public class Productoa extends javax.swing.JInternalFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             Producto producto = new Producto();
 
-            int id = Integer.parseInt(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 0).toString());
+            int idProducto = Integer.parseInt(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 0).toString());
             String descripcion = jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 1).toString();
             //int idProveedor = Integer.parseInt(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 2).toString());
             Float costo = Float.parseFloat(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 2).toString());
             Float precio_venta = Float.parseFloat(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 3).toString());
             int cantidad = Integer.parseInt(jTableProducto.getValueAt(jTableProducto.getSelectedRow(), 4).toString());
 
-            producto.setId(id);
+            producto.setidProducto(idProducto);
             producto.setDescripcion(descripcion);
             //producto.setId_proveedor(idProveedor);
             producto.setCosto(costo);
@@ -250,7 +254,7 @@ public class Productoa extends javax.swing.JInternalFrame {
             resultado = productoDao.search(valor);
 
             while (resultado.next()) {
-                registro[0] = resultado.getString("id");
+                registro[0] = resultado.getString("idProducto");
                 registro[1] = resultado.getString("descripcion");
                 registro[2] = resultado.getString("costo");
                 registro[3] = resultado.getString("precio_venta");
@@ -275,7 +279,7 @@ public class Productoa extends javax.swing.JInternalFrame {
             Conexion cc = new Conexion();
            
             Connection cn = cc.ConectarBasedeDatos();
-            String sql = "UPDATE productos SET estado  = '0' WHERE id = '" + valor + "' ";
+            String sql = "UPDATE productos SET estado  = '0' WHERE idProducto = '" + valor + "' ";
             PreparedStatement eliminar = cn.prepareStatement(sql);
             eliminar.executeUpdate();
             JOptionPane.showMessageDialog(null, "El producto fue eliminado con exito");
