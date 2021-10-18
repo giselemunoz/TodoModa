@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/ListaDeProveedores.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/utilidades/UtilidadesDeCadenas.java</file>
+            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/modelo/ventas.java</file>
+            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/Productoa.java</file>
             <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/VentasForm.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/ListaDeClientes.java</file>
             <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/ClienteForm.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/ventanas/TablaCliente.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/dao/ProveedorDAO.java</file>
-            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/utilidades/UtilidadesNumericas.java</file>
+            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/dao/ProductoDAO.java</file>
+            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/dao/ventasDAO.java</file>
+            <file>file:/C:/Users/Gisel%20Muñoz/Documents/NetBeansProjects/todo_moda-master/src/modelo/DetalleVenta.java</file>
         </group>
     </open-files>
 </project-private>
